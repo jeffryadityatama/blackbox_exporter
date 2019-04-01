@@ -18,6 +18,8 @@ before_script:
 script:
 - make
 - git diff --exit-code
-- docker build -t blackbox_exporter .
-- docker tag blackbox_exporter jeffryadityatama/blackbox_exporter:latest
-- docker push jeffryadityatama/blackbox_exporter:latest
+
+after_success:
+  - docker build -t blackbox_exporter .
+  - docker tag blackbox_exporter jeffryadityatama/blackbox_exporter:latest
+  - docker push jeffryadityatama/blackbox_exporter:latest
